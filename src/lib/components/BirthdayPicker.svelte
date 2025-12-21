@@ -23,7 +23,7 @@
 		} else if (rank <= 50) {
 			return {
 				label: 'very common',
-				description: "Your birthday is quite popular. You probably know several people who share it."
+				description: "Your birthday is quite popular. You might know someone who shares it."
 			};
 		} else if (rank <= 120) {
 			return {
@@ -43,12 +43,12 @@
 		} else if (rank <= 350) {
 			return {
 				label: 'rare',
-				description: "Not many people share your birthday. It's one of the less common dates."
+				description: "Not as many people share your birthday. It's one of the least common dates."
 			};
 		} else {
 			return {
 				label: 'extremely rare',
-				description: "Your birthday is one of the rarest! Very few people are born on this date."
+				description: "Your birthday is one of the rarest! Fewer people are born on this date."
 			};
 		}
 	}
