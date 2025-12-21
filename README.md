@@ -54,6 +54,6 @@ npm run preview
 
 ## Deployment
 
-This project is configured for static hosting on Vercel. Simply connect your repository and Vercel will automatically build and deploy.
+This project is configured for static hosting on Vercel.
 
 The static adapter outputs to the `build/` directory.
