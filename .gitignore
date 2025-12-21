@@ -1,8 +1,5 @@
 node_modules
 
-# Raw data (downloaded, not committed)
-data/raw/
-
 # Output
 .output
 .vercel
