@@ -1,0 +1,73 @@
+/* Fraunces for headings, DM Sans for body */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Fraunces:opsz,wght@9..144,700&display=swap');
+
+:root {
+	/* Base palette - warm dark theme */
+	--color-bg: #1a1614;
+	--color-bg-elevated: #242120;
+	--color-text: #f5f0eb;
+	--color-text-muted: #a89f97;
+	--color-border: #3d3632;
+	--color-accent: #f768a1;
+	--color-result-bg: #2a2523;
+	--color-footer-bg: #0f0d0c;
+
+	/* Tooltip */
+	--color-tooltip-bg: #f5f0eb;
+	--color-tooltip-text: #1a1614;
+	--color-tooltip-muted: #5a524a;
+}
+
+@media (prefers-color-scheme: light) {
+	:root {
+		--color-bg: #faf8f5;
+		--color-bg-elevated: #ffffff;
+		--color-text: #1a1614;
+		--color-text-muted: #6b6158;
+		--color-border: #e5dfd8;
+		--color-accent: #ae017e;
+		--color-result-bg: #fff7f3;
+		--color-footer-bg: #f0ebe6;
+
+		--color-tooltip-bg: #1a1614;
+		--color-tooltip-text: #f5f0eb;
+		--color-tooltip-muted: #a89f97;
+	}
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+body {
+	margin: 0;
+	font-family: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+	background: var(--color-bg);
+	color: var(--color-text);
+	line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Fraunces', Georgia, serif;
+	font-weight: 700;
+}
+
+/* Focus styles */
+:focus-visible {
+	outline: 2px solid var(--color-accent);
+	outline-offset: 2px;
+}
+
+/* Selection */
+::selection {
+	background: var(--color-accent);
+	color: var(--color-bg);
+}
+

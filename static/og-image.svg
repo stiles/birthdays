@@ -1,0 +1,40 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1614"/>
+      <stop offset="100%" style="stop-color:#2a2320"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  
+  <!-- Accent bar -->
+  <rect x="0" y="0" width="8" height="630" fill="#f768a1"/>
+  
+  <!-- Title -->
+  <text x="60" y="200" font-family="system-ui, -apple-system, sans-serif" font-size="72" font-weight="700" fill="#f5f0eb">
+    How common is
+  </text>
+  <text x="60" y="290" font-family="system-ui, -apple-system, sans-serif" font-size="72" font-weight="700" fill="#f5f0eb">
+    your birthday?
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="60" y="360" font-family="system-ui, -apple-system, sans-serif" font-size="28" fill="#a89f97">
+    Find out how your birthday ranks among all 366 days
+  </text>
+  
+  <!-- Mini heatmap decoration -->
+  <rect x="700" y="180" width="30" height="30" fill="#49006a" rx="2"/><rect x="732" y="180" width="30" height="30" fill="#49006a" rx="2"/><rect x="764" y="180" width="30" height="30" fill="#fa9fb5" rx="2"/><rect x="796" y="180" width="30" height="30" fill="#fa9fb5" rx="2"/><rect x="828" y="180" width="30" height="30" fill="#fde0dd" rx="2"/><rect x="860" y="180" width="30" height="30" fill="#7a0177" rx="2"/><rect x="892" y="180" width="30" height="30" fill="#dd3497" rx="2"/><rect x="924" y="180" width="30" height="30" fill="#fff7f3" rx="2"/><rect x="956" y="180" width="30" height="30" fill="#fcc5c0" rx="2"/><rect x="988" y="180" width="30" height="30" fill="#ae017e" rx="2"/><rect x="1020" y="180" width="30" height="30" fill="#f768a1" rx="2"/><rect x="1052" y="180" width="30" height="30" fill="#fde0dd" rx="2"/><rect x="700" y="212" width="30" height="30" fill="#fa9fb5" rx="2"/><rect x="732" y="212" width="30" height="30" fill="#fa9fb5" rx="2"/><rect x="764" y="212" width="30" height="30" fill="#fde0dd" rx="2"/><rect x="796" y="212" width="30" height="30" fill="#49006a" rx="2"/><rect x="828" y="212" width="30" height="30" fill="#7a0177" rx="2"/><rect x="860" y="212" width="30" height="30" fill="#ae017e" rx="2"/><rect x="892" y="212" width="30" height="30" fill="#ae017e" rx="2"/><rect x="924" y="212" width="30" height="30" fill="#49006a" rx="2"/><rect x="956" y="212" width="30" height="30" fill="#49006a" rx="2"/><rect x="988" y="212" width="30" height="30" fill="#ae017e" rx="2"/><rect x="1020" y="212" width="30" height="30" fill="#f768a1" rx="2"/><rect x="1052" y="212" width="30" height="30" fill="#fde0dd" rx="2"/><rect x="700" y="244" width="30" height="30" fill="#fcc5c0" rx="2"/><rect x="732" y="244" width="30" height="30" fill="#fff7f3" rx="2"/><rect x="764" y="244" width="30" height="30" fill="#ae017e" rx="2"/><rect x="796" y="244" width="30" height="30" fill="#f768a1" rx="2"/><rect x="828" y="244" width="30" height="30" fill="#fff7f3" rx="2"/><rect x="860" y="244" width="30" height="30" fill="#fde0dd" rx="2"/><rect x="892" y="244" width="30" height="30" fill="#fcc5c0" rx="2"/><rect x="924" y="244" width="30" height="30" fill="#dd3497" rx="2"/><rect x="956" y="244" width="30" height="30" fill="#fde0dd" rx="2"/><rect x="988" y="244" width="30" height="30" fill="#7a0177" rx="2"/><rect x="1020" y="244" width="30" height="30" fill="#dd3497" rx="2"/><rect x="1052" y="244" width="30" height="30" fill="#49006a" rx="2"/><rect x="700" y="276" width="30" height="30" fill="#fcc5c0" rx="2"/><rect x="732" y="276" width="30" height="30" fill="#fa9fb5" rx="2"/><rect x="764" y="276" width="30" height="30" fill="#dd3497" rx="2"/><rect x="796" y="276" width="30" height="30" fill="#fcc5c0" rx="2"/><rect x="828" y="276" width="30" height="30" fill="#fff7f3" rx="2"/><rect x="860" y="276" width="30" height="30" fill="#7a0177" rx="2"/><rect x="892" y="276" width="30" height="30" fill="#fcc5c0" rx="2"/><rect x="924" y="276" width="30" height="30" fill="#49006a" rx="2"/><rect x="956" y="276" width="30" height="30" fill="#fde0dd" rx="2"/><rect x="988" y="276" width="30" height="30" fill="#7a0177" rx="2"/><rect x="1020" y="276" width="30" height="30" fill="#49006a" rx="2"/><rect x="1052" y="276" width="30" height="30" fill="#f768a1" rx="2"/><rect x="700" y="308" width="30" height="30" fill="#49006a" rx="2"/><rect x="732" y="308" width="30" height="30" fill="#f768a1" rx="2"/><rect x="764" y="308" width="30" height="30" fill="#f768a1" rx="2"/><rect x="796" y="308" width="30" height="30" fill="#7a0177" rx="2"/><rect x="828" y="308" width="30" height="30" fill="#fcc5c0" rx="2"/><rect x="860" y="308" width="30" height="30" fill="#7a0177" rx="2"/><rect x="892" y="308" width="30" height="30" fill="#fff7f3" rx="2"/><rect x="924" y="308" width="30" height="30" fill="#fff7f3" rx="2"/><rect x="956" y="308" width="30" height="30" fill="#fcc5c0" rx="2"/><rect x="988" y="308" width="30" height="30" fill="#fcc5c0" rx="2"/><rect x="1020" y="308" width="30" height="30" fill="#ae017e" rx="2"/><rect x="1052" y="308" width="30" height="30" fill="#fff7f3" rx="2"/><rect x="700" y="340" width="30" height="30" fill="#fcc5c0" rx="2"/><rect x="732" y="340" width="30" height="30" fill="#7a0177" rx="2"/><rect x="764" y="340" width="30" height="30" fill="#dd3497" rx="2"/><rect x="796" y="340" width="30" height="30" fill="#fde0dd" rx="2"/><rect x="828" y="340" width="30" height="30" fill="#fff7f3" rx="2"/><rect x="860" y="340" width="30" height="30" fill="#7a0177" rx="2"/><rect x="892" y="340" width="30" height="30" fill="#ae017e" rx="2"/><rect x="924" y="340" width="30" height="30" fill="#fa9fb5" rx="2"/><rect x="956" y="340" width="30" height="30" fill="#49006a" rx="2"/><rect x="988" y="340" width="30" height="30" fill="#7a0177" rx="2"/><rect x="1020" y="340" width="30" height="30" fill="#fa9fb5" rx="2"/><rect x="1052" y="340" width="30" height="30" fill="#fa9fb5" rx="2"/>
+  
+  <!-- CTA -->
+  <rect x="60" y="480" width="320" height="60" rx="8" fill="#f768a1"/>
+  <text x="220" y="520" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="600" fill="white" text-anchor="middle">
+    Check your rank
+  </text>
+  
+  <!-- URL -->
+  <text x="60" y="590" font-family="system-ui, -apple-system, sans-serif" font-size="22" fill="#6b6158">
+    birthdayrank.com
+  </text>
+</svg>

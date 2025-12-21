@@ -1,0 +1,205 @@
+<script lang="ts">
+	import { onMount } from 'svelte';
+	import { browser } from '$app/environment';
+	import Heatmap from '$lib/components/Heatmap.svelte';
+	import Legend from '$lib/components/Legend.svelte';
+	import BirthdayPicker from '$lib/components/BirthdayPicker.svelte';
+	import ShareCard from '$lib/components/ShareCard.svelte';
+	import RankingTables from '$lib/components/RankingTables.svelte';
+	import Footer from '$lib/components/Footer.svelte';
+	import Tooltip from '$lib/components/Tooltip.svelte';
+	import birthdayData from '$lib/data/birthdays.json';
+	import type { BirthdayData } from '$lib/types';
+
+	const data = birthdayData as BirthdayData[];
+
+	let selectedDate: { month: number; day: number } | null = $state(null);
+	let hoveredData: BirthdayData | null = $state(null);
+	let tooltipX = $state(0);
+	let tooltipY = $state(0);
+	let tooltipVisible = $state(false);
+
+	let selectedData = $derived(
+		selectedDate
+			? data.find(d => d.month === selectedDate.month && d.day === selectedDate.day)
+			: null
+	);
+
+	function handleDateSelect(date: { month: number; day: number } | null) {
+		selectedDate = date;
+		if (browser) {
+			if (date) {
+				const hash = `#${date.month}-${date.day}`;
+				history.replaceState(null, '', hash);
+			} else {
+				history.replaceState(null, '', window.location.pathname);
+			}
+		}
+	}
+
+	function handleDateHover(date: BirthdayData | null) {
+		hoveredData = date;
+		tooltipVisible = !!date;
+	}
+
+	function handleMouseMove(e: MouseEvent) {
+		tooltipX = e.clientX;
+		tooltipY = e.clientY;
+	}
+
+	onMount(() => {
+		// Parse hash on load
+		const hash = window.location.hash.slice(1);
+		if (hash) {
+			const [month, day] = hash.split('-').map(Number);
+			if (month >= 1 && month <= 12 && day >= 1 && day <= 31) {
+				const dateData = data.find(d => d.month === month && d.day === day);
+				if (dateData) {
+					selectedDate = { month, day };
+				}
+			}
+		}
+	});
+
+	const siteUrl = 'https://birthdayrank.com';
+	const title = 'How common is your birthday?';
+	const description = 'Find out how your birthday ranks among all 366 days. Explore U.S. birth frequency data from 1994-2014 with this interactive heatmap.';
+</script>
+
+<svelte:head>
+	<title>{title}</title>
+	<meta name="description" content={description} />
+	<meta name="author" content="Matt Stiles" />
+	<meta name="robots" content="index, follow" />
+	<link rel="canonical" href={siteUrl} />
+	
+	<!-- Open Graph -->
+	<meta property="og:type" content="website" />
+	<meta property="og:site_name" content="Birthday Rank" />
+	<meta property="og:url" content={siteUrl} />
+	<meta property="og:title" content={title} />
+	<meta property="og:description" content={description} />
+	<meta property="og:image" content="{siteUrl}/og-image.png" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta property="og:image:alt" content="Birthday Rank - Find out how common your birthday is" />
+	
+	<!-- Twitter -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="@stiles" />
+	<meta name="twitter:creator" content="@stiles" />
+	<meta name="twitter:title" content={title} />
+	<meta name="twitter:description" content={description} />
+	<meta name="twitter:image" content="{siteUrl}/og-image.png" />
+</svelte:head>
+
+<svelte:window onmousemove={handleMouseMove} />
+
+<main>
+	<header>
+		<h1>How common is your birthday?</h1>
+		<p class="subtitle">
+			This interactive heatmap shows the relative frequency of birthdays in the United States, based on 21 years of birth data. Select your birthday to see how it ranks.
+		</p>
+	</header>
+
+	<section class="picker-section">
+		<BirthdayPicker
+			{data}
+			{selectedDate}
+			onDateSelect={handleDateSelect}
+		/>
+	</section>
+
+	<section class="chart-section">
+		<Legend />
+		<Heatmap
+			{data}
+			{selectedDate}
+			onDateSelect={handleDateSelect}
+			onDateHover={handleDateHover}
+		/>
+	</section>
+
+	{#if selectedData}
+		<section class="share-section">
+			<ShareCard data={selectedData} />
+		</section>
+	{/if}
+
+	<section class="tables-section">
+		<RankingTables {data} />
+	</section>
+
+	<div class="notes">
+		<p class="footnote">
+			Based on U.S. birth data from 1994-2014. September dates are most common
+			(conceived around the winter holidays). Christmas and New Year's Day are least common.
+		</p>
+	</div>
+</main>
+
+<Footer />
+
+<Tooltip
+	data={hoveredData}
+	x={tooltipX}
+	y={tooltipY}
+	visible={tooltipVisible}
+/>
+
+<style>
+	main {
+		max-width: 900px;
+		margin: 0 auto;
+		padding: 40px 24px;
+	}
+
+	header {
+		margin-bottom: 36px;
+	}
+
+	h1 {
+		font-size: clamp(2rem, 6vw, 3rem);
+		font-weight: 700;
+		margin: 0 0 16px 0;
+		color: var(--color-text);
+		line-height: 1.1;
+	}
+
+	.subtitle {
+		font-size: clamp(1rem, 2.5vw, 1.25rem);
+		color: var(--color-text-muted);
+		margin: 0;
+		line-height: 1.5;
+		max-width: 640px;
+	}
+
+	.picker-section {
+		margin-bottom: 32px;
+	}
+
+	.chart-section {
+		margin-bottom: 40px;
+	}
+
+	.share-section {
+		margin-bottom: 40px;
+	}
+
+	.tables-section {
+		margin-bottom: 40px;
+	}
+
+	.notes {
+		padding-top: 24px;
+		border-top: 1px solid var(--color-border);
+	}
+
+	.footnote {
+		font-size: 14px;
+		color: var(--color-text-muted);
+		margin: 0;
+		line-height: 1.5;
+	}
+</style>
