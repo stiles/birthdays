@@ -25,6 +25,13 @@
 		flex-direction: column;
 		gap: 6px;
 		margin-bottom: 20px;
+		max-width: 50%;
+	}
+
+	@media (max-width: 600px) {
+		.legend {
+			max-width: 100%;
+		}
 	}
 
 	.legend-labels {
