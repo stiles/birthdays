@@ -244,8 +244,7 @@
 	}
 
 	.date-cell.selected {
-		stroke: #1a1614;
+		stroke: #e6ff00;
 		stroke-width: 3px;
-		filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.8));
 	}
 </style>
