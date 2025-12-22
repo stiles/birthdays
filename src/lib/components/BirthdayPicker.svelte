@@ -268,7 +268,7 @@
 
 	.result-headline .rarity-label {
 		color: var(--color-accent);
-		text-transform: uppercase;
+		/* text-transform: uppercase; */
 		letter-spacing: 0.02em;
 	}
 

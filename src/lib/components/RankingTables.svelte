@@ -21,7 +21,7 @@
 				<tr>
 					<th>Rank</th>
 					<th>Date</th>
-					<th>Avg. births</th>
+					<th>Average daily births</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -43,7 +43,7 @@
 				<tr>
 					<th>Rank</th>
 					<th>Date</th>
-					<th>Avg. births</th>
+					<th>Avgerage daily births</th>
 				</tr>
 			</thead>
 			<tbody>
