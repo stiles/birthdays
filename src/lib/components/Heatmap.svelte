@@ -150,6 +150,21 @@
 						{/each}
 					{/each}
 				</g>
+
+				<!-- Selection highlight overlay (renders on top) -->
+				{#if selectedDate}
+					{@const selDay = selectedDate.day}
+					{@const selMonth = selectedDate.month}
+					<rect
+						x={labelOffset + (selMonth - 1) * gridSize}
+						y={20 + (selDay - 1) * gridSize}
+						width={gridSize}
+						height={gridSize}
+						fill="none"
+						class="selection-highlight"
+						pointer-events="none"
+					/>
+				{/if}
 			{:else}
 				<!-- HORIZONTAL LAYOUT (Desktop): Days across, months down -->
 				
@@ -204,6 +219,21 @@
 						{/each}
 					{/each}
 				</g>
+
+				<!-- Selection highlight overlay (renders on top) -->
+				{#if selectedDate}
+					{@const selDay = selectedDate.day}
+					{@const selMonth = selectedDate.month}
+					<rect
+						x={labelOffset + (selDay - 1) * gridSize}
+						y={20 + (selMonth - 1) * gridSize}
+						width={gridSize}
+						height={gridSize}
+						fill="none"
+						class="selection-highlight"
+						pointer-events="none"
+					/>
+				{/if}
 			{/if}
 		</svg>
 	{/if}
@@ -243,7 +273,7 @@
 		stroke-width: 2px;
 	}
 
-	.date-cell.selected {
+	.selection-highlight {
 		stroke: #e6ff00;
 		stroke-width: 3px;
 	}
