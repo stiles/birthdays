@@ -63,7 +63,7 @@
 
 	const siteUrl = 'https://birthdayrank.com';
 	const title = 'How common is your birthday?';
-	const description = 'Find out how your birthday ranks among all 366 days. Explore U.S. birth frequency data from 1994-2014 with this interactive heatmap.';
+	const description = 'Find out how your birthday ranks among all 366 days and which famous people share it. Explore U.S. birth frequency data from 1994-2014 with this interactive heatmap.';
 </script>
 
 <svelte:head>
