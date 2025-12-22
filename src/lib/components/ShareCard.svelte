@@ -121,39 +121,37 @@
 	<h3 class="share-title">Share your result</h3>
 	<p class="share-subtitle">Challenge your friends to find out how their birthday ranks!</p>
 	
-	<div class="share-actions">
+	<div class="share-buttons">
 		<button class="share-btn primary" onclick={downloadImage} disabled={downloading}>
-			<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+			<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
 				<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
 				<polyline points="7 10 12 15 17 10"/>
 				<line x1="12" y1="15" x2="12" y2="3"/>
 			</svg>
-			{downloading ? 'Saving...' : 'Download share image'}
+			{downloading ? 'Saving...' : 'Save image'}
 		</button>
 		
-		<div class="share-buttons">
-			<button class="share-btn" onclick={shareTwitter}>
-				<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-					<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-				</svg>
-				Post on X
-			</button>
-			
-			<button class="share-btn" onclick={shareFacebook}>
-				<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-					<path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-				</svg>
-				Share on Facebook
-			</button>
-			
-			<button class="share-btn" onclick={copyLink}>
-				<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-					<rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
-					<path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
-				</svg>
-				{copied ? 'Copied!' : 'Copy link'}
-			</button>
-		</div>
+		<button class="share-btn" onclick={shareTwitter}>
+			<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+				<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+			</svg>
+			Post on X
+		</button>
+		
+		<button class="share-btn" onclick={shareFacebook}>
+			<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+				<path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+			</svg>
+			Facebook
+		</button>
+		
+		<button class="share-btn" onclick={copyLink}>
+			<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+				<rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+				<path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+			</svg>
+			{copied ? 'Copied!' : 'Copy link'}
+		</button>
 	</div>
 </div>
 
@@ -182,19 +180,19 @@
 		margin: 0 0 20px 0;
 	}
 
-	.share-actions {
-		display: flex;
-		flex-direction: column;
-		gap: 16px;
+	.share-buttons {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 10px;
 	}
 
 	.share-btn {
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		gap: 10px;
-		padding: 12px 20px;
-		font-size: 15px;
+		gap: 8px;
+		padding: 12px 16px;
+		font-size: 14px;
 		font-weight: 500;
 		border: 1px solid var(--color-border);
 		border-radius: 8px;
@@ -217,9 +215,6 @@
 		background: var(--color-accent);
 		border-color: var(--color-accent);
 		color: white;
-		padding: 16px 24px;
-		font-size: 16px;
-		font-weight: 600;
 	}
 
 	.share-btn.primary:hover:not(:disabled) {
@@ -227,28 +222,19 @@
 		background: var(--color-accent);
 	}
 
-	.share-buttons {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 10px;
-	}
-
-	.share-buttons .share-btn {
-		flex: 1;
-		min-width: 140px;
-	}
-
-	@media (max-width: 480px) {
+	@media (max-width: 600px) {
 		.share-container {
 			padding: 20px;
 		}
 
 		.share-buttons {
-			flex-direction: column;
+			grid-template-columns: repeat(2, 1fr);
 		}
+	}
 
-		.share-buttons .share-btn {
-			width: 100%;
+	@media (max-width: 400px) {
+		.share-buttons {
+			grid-template-columns: 1fr;
 		}
 	}
 </style>
