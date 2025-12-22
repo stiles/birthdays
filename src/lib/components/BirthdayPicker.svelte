@@ -1,6 +1,12 @@
 <script lang="ts">
 	import type { BirthdayData } from '$lib/types';
 	import { formatDate } from '$lib/utils';
+	import famousBirthdaysData from '$lib/data/famous-birthdays.json';
+
+	interface FamousPerson {
+		name: string;
+		year?: number;
+	}
 
 	interface Props {
 		data: BirthdayData[];
@@ -13,6 +19,16 @@
 		selectedDate = null,
 		onDateSelect = () => {}
 	}: Props = $props();
+
+	// Get 3 random famous people for the selected date
+	function getRandomFamousPeople(month: number, day: number): FamousPerson[] {
+		const key = `${month}-${day}`;
+		const people = (famousBirthdaysData as Record<string, FamousPerson[]>)[key] || [];
+		if (people.length <= 3) return people;
+		// Shuffle and take 3
+		const shuffled = [...people].sort(() => Math.random() - 0.5);
+		return shuffled.slice(0, 3);
+	}
 
 	function getRarityDescription(rank: number): { label: string; description: string } {
 		if (rank <= 15) {
@@ -84,6 +100,10 @@
 	);
 
 	let rarity = $derived(selectedData ? getRarityDescription(selectedData.rank) : null);
+
+	let famousPeople = $derived(
+		selectedDate ? getRandomFamousPeople(selectedDate.month, selectedDate.day) : []
+	);
 
 	// Sync internal state with external selection changes (from heatmap clicks)
 	$effect(() => {
@@ -163,6 +183,11 @@
 			<p class="result-description">
 				{rarity.description}
 			</p>
+			{#if famousPeople.length > 0}
+				<p class="famous-births">
+					<strong>Famous births on this day:</strong> {famousPeople.map(p => p.name).join(', ')}
+				</p>
+			{/if}
 		</div>
 	{/if}
 </div>
@@ -259,10 +284,23 @@
 	}
 
 	.result-description {
-		margin: 0;
+		margin: 0 0 12px 0;
 		font-size: 15px;
 		color: var(--color-text-muted);
 		line-height: 1.5;
+	}
+
+	.famous-births {
+		margin: 0;
+		padding-top: 12px;
+		border-top: 1px solid var(--color-border);
+		font-size: 14px;
+		color: var(--color-text-muted);
+		line-height: 1.5;
+	}
+
+	.famous-births strong {
+		color: var(--color-text);
 	}
 
 	@media (max-width: 480px) {
@@ -281,3 +319,4 @@
 		}
 	}
 </style>
+

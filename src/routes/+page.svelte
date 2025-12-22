@@ -8,7 +8,6 @@
 	import RankingTables from '$lib/components/RankingTables.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import Tooltip from '$lib/components/Tooltip.svelte';
-	import FamousBirthdays from '$lib/components/FamousBirthdays.svelte';
 	import birthdayData from '$lib/data/birthdays.json';
 	import type { BirthdayData } from '$lib/types';
 
@@ -110,7 +109,6 @@
 			{selectedDate}
 			onDateSelect={handleDateSelect}
 		/>
-		<FamousBirthdays {selectedDate} />
 	</section>
 
 	<section class="chart-section">
