@@ -16,7 +16,7 @@
 					<a href="https://buymeacoffee.com/mattstiles" class="footer-link" target="_blank" rel="noopener noreferrer">Buy me coffee?</a>
 				</div>
 				<div class="footer-meta">
-					Based on U.S. birth data from 1994-2014 via FiveThirtyEight (CDC NCHS, SSA). September dates are most common; Christmas and New Year's Day are least common.
+					Birth data from 1994-2014 via <a href="https://github.com/fivethirtyeight/data/tree/master/births">FiveThirtyEight</a> (CDC NCHS, SSA). Famous birthdays from <a href="https://github.com/richard512/Little-Big-Data">Little-Big-Data</a>.
 				</div>
 			</div>
 			<div class="footer-social">
@@ -101,6 +101,15 @@
 		font-size: 13px;
 		color: var(--color-text-muted);
 		opacity: 0.7;
+	}
+
+	.footer-meta a {
+		color: var(--color-text-muted);
+		text-decoration: underline;
+	}
+
+	.footer-meta a:hover {
+		color: var(--color-text);
 	}
 
 	.footer-social {
