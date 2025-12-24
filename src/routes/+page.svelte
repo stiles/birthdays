@@ -224,7 +224,6 @@
 
 	.notes {
 		padding-top: 24px;
-		border-top: 1px solid var(--color-border);
 	}
 
 	.footnote {
