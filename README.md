@@ -8,7 +8,7 @@ An interactive visualization showing the relative frequency of birthdays in the 
 
 - Interactive heatmap showing birth frequency by calendar day
 - Select your birthday to see how it ranks (1st to 366th)
-- Conversational descriptions of rarity (extremely common to extremely rare)
+- Conversational descriptions of rarity (quite common to quite rare)
 - Downloadable share images for social media
 - Responsive design with light/dark mode support
 - Shareable URLs via hash (e.g., `#9-9` for September 9th)

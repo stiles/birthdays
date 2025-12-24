@@ -6,6 +6,9 @@
 	import BirthdayPicker from '$lib/components/BirthdayPicker.svelte';
 	import ShareCard from '$lib/components/ShareCard.svelte';
 	import RankingTables from '$lib/components/RankingTables.svelte';
+	import DistributionChart from '$lib/components/DistributionChart.svelte';
+	import ZodiacBreakdown from '$lib/components/ZodiacBreakdown.svelte';
+	import CompareBirthdays from '$lib/components/CompareBirthdays.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import Tooltip from '$lib/components/Tooltip.svelte';
 	import birthdayData from '$lib/data/birthdays.json';
@@ -63,7 +66,7 @@
 
 	const siteUrl = 'https://birthdayrank.com';
 	const title = 'How common is your birthday?';
-	const description = 'Find out how your birthday ranks among all 366 days and which famous people share it. Explore U.S. birth frequency data from 1994-2014 with this interactive heatmap.';
+	const description = 'Find out how your birthday ranks among all 366 days, which famous people share it, your zodiac sign popularity, and compare with friends. Explore U.S. birth frequency data from 1994-2014.';
 </script>
 
 <svelte:head>
@@ -127,6 +130,22 @@
 		</section>
 	{/if}
 
+	<section class="distribution-section">
+		<DistributionChart 
+			{data} 
+			{selectedDate} 
+			onDateSelect={handleDateSelect} 
+		/>
+	</section>
+
+	<section class="compare-section">
+		<CompareBirthdays {data} {selectedDate} />
+	</section>
+
+	<section class="zodiac-section">
+		<ZodiacBreakdown {data} {selectedDate} />
+	</section>
+
 	<section class="tables-section">
 		<RankingTables {data} />
 	</section>
@@ -184,6 +203,18 @@
 	}
 
 	.share-section {
+		margin-bottom: 40px;
+	}
+
+	.distribution-section {
+		margin-bottom: 40px;
+	}
+
+	.compare-section {
+		margin-bottom: 40px;
+	}
+
+	.zodiac-section {
 		margin-bottom: 40px;
 	}
 

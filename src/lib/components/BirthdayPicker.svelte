@@ -20,6 +20,16 @@
 		onDateSelect = () => {}
 	}: Props = $props();
 
+	// Format conception date from "4/10" format to "April 10"
+	function formatConceptionDate(dateStr: string): string {
+		const [month, day] = dateStr.split('/').map(Number);
+		const monthNames = [
+			'January', 'February', 'March', 'April', 'May', 'June',
+			'July', 'August', 'September', 'October', 'November', 'December'
+		];
+		return `${monthNames[month - 1]} ${day}`;
+	}
+
 	// Get 3 random famous people for the selected date
 	function getRandomFamousPeople(month: number, day: number): FamousPerson[] {
 		const key = `${month}-${day}`;
@@ -33,13 +43,13 @@
 	function getRarityDescription(rank: number): { label: string; description: string } {
 		if (rank <= 15) {
 			return {
-				label: 'extremely common',
+				label: 'quite common',
 				description: "You share your birthday with a lot of people! It's one of the most popular birth dates in the U.S."
 			};
 		} else if (rank <= 50) {
 			return {
-				label: 'very common',
-				description: "Your birthday is quite popular. You might know someone who shares it."
+				label: 'common',
+				description: "Your birthday is popular. You might know someone who shares it."
 			};
 		} else if (rank <= 120) {
 			return {
@@ -53,7 +63,7 @@
 			};
 		} else if (rank <= 310) {
 			return {
-				label: 'somewhat uncommon',
+				label: 'uncommon',
 				description: "Your birthday is a bit less common than most."
 			};
 		} else if (rank <= 350) {
@@ -63,7 +73,7 @@
 			};
 		} else {
 			return {
-				label: 'extremely rare',
+				label: 'quite rare',
 				description: "Your birthday is one of the rarest! Fewer people are born on this date."
 			};
 		}
@@ -175,14 +185,17 @@
 			<p class="result-headline">
 				Your birthday is <strong class="rarity-label">{rarity.label}</strong>
 			</p>
-			<p class="result-rank">
-				<strong>{formatDate(selectedData.month, selectedData.day)}</strong> ranks 
-				<strong>{selectedData.rankLabel}</strong> out of 366 days, with an average of 
-				<strong>{selectedData.value.toLocaleString()}</strong> births per day.
-			</p>
-			<p class="result-description">
-				{rarity.description}
-			</p>
+		<p class="result-rank">
+			<strong>{formatDate(selectedData.month, selectedData.day)}</strong> ranks 
+			<strong>{selectedData.rankLabel}</strong> out of 366 days, with an average of 
+			<strong>{selectedData.value.toLocaleString()}</strong> births per day.
+		</p>
+		<p class="result-description">
+			{rarity.description}
+		</p>
+		<p class="conception-info">
+			Based on a typical 40-week pregnancy, you were likely conceived around <strong>{formatConceptionDate(selectedData.conceptionDate)}</strong>.
+		</p>
 			{#if famousPeople.length > 0}
 				<p class="famous-births">
 					<strong>Famous births on this day:</strong> {famousPeople.map(p => p.name).join(', ')}
@@ -288,6 +301,19 @@
 		font-size: 15px;
 		color: var(--color-text-muted);
 		line-height: 1.5;
+	}
+
+	.conception-info {
+		margin: 0 0 12px 0;
+		font-size: 14px;
+		color: var(--color-text-muted);
+		line-height: 1.5;
+		font-style: italic;
+	}
+
+	.conception-info strong {
+		color: var(--color-text);
+		font-style: normal;
 	}
 
 	.famous-births {
