@@ -149,13 +149,6 @@
 	<section class="tables-section">
 		<RankingTables {data} />
 	</section>
-
-	<div class="notes">
-		<p class="footnote">
-			Based on U.S. birth data from 1994-2014. September dates are most common
-			(conceived around the winter holidays). Christmas and New Year's Day are least common.
-		</p>
-	</div>
 </main>
 
 <Footer />
@@ -220,16 +213,5 @@
 
 	.tables-section {
 		margin-bottom: 40px;
-	}
-
-	.notes {
-		padding-top: 24px;
-	}
-
-	.footnote {
-		font-size: 14px;
-		color: var(--color-text-muted);
-		margin: 0;
-		line-height: 1.5;
 	}
 </style>
