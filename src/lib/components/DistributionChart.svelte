@@ -42,10 +42,11 @@
 		return () => observer.disconnect();
 	});
 
-	// Dimensions
-	let barWidth = $derived(Math.max(1, (containerWidth - 60) / 366));
+	// Dimensions - more right padding on mobile
+	let isMobile = $derived(containerWidth < 500);
+	let padding = $derived({ top: 20, right: isMobile ? 24 : 10, bottom: 30, left: isMobile ? 40 : 50 });
+	let barWidth = $derived(Math.max(1, (containerWidth - padding.left - padding.right) / 366));
 	let chartHeight = 150;
-	let padding = { top: 20, right: 10, bottom: 30, left: 50 };
 
 	function getBarHeight(value: number): number {
 		const range = maxValue - minValue;
