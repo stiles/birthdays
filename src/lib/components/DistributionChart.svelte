@@ -1,4 +1,5 @@
 <script lang="ts">
+	import * as d3 from 'd3';
 	import type { BirthdayData } from '$lib/types';
 	import { formatDate } from '$lib/utils';
 
@@ -21,6 +22,14 @@
 	let minValue = $derived(Math.min(...data.map(d => d.value)));
 	let maxValue = $derived(Math.max(...data.map(d => d.value)));
 
+	// Use same RdPu color scale as heatmap (based on value, not rank)
+	const colorScale = d3.scaleThreshold<number, string>()
+		.domain([9000, 10500, 10750, 11000, 11250, 11500, 11750, 12000])
+		.range([
+			'#fff7f3', '#fde0dd', '#fcc5c0', '#fa9fb5',
+			'#f768a1', '#dd3497', '#ae017e', '#7a0177', '#49006a'
+		]);
+
 	let containerWidth = $state(800);
 	let containerRef: HTMLDivElement | null = $state(null);
 
@@ -41,15 +50,6 @@
 	function getBarHeight(value: number): number {
 		const range = maxValue - minValue;
 		return ((value - minValue) / range) * (chartHeight - padding.top - padding.bottom);
-	}
-
-	function getBarColor(rank: number): string {
-		// Match heatmap color scale
-		const t = rank / 366;
-		if (t < 0.25) return '#ae017e';
-		if (t < 0.5) return '#f768a1';
-		if (t < 0.75) return '#fbb4b9';
-		return '#feebe2';
 	}
 
 	function isSelected(d: BirthdayData): boolean {
@@ -116,7 +116,7 @@
 					{y}
 					width={Math.max(1, barWidth - 0.5)}
 					height={barHeight}
-					fill={selected ? '#e6ff00' : getBarColor(d.rank)}
+					fill={selected ? '#e6ff00' : colorScale(d.value)}
 					stroke={selected ? '#000' : 'none'}
 					stroke-width={selected ? 1 : 0}
 					class="bar"
