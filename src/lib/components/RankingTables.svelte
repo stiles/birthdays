@@ -43,7 +43,7 @@
 				<tr>
 					<th>Rank</th>
 					<th>Date</th>
-					<th>Avgerage daily births</th>
+					<th>Average daily births</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -63,8 +63,14 @@
 	.tables-container {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-		gap: 32px;
+		gap: 24px;
 		margin-bottom: 40px;
+	}
+
+	@media (min-width: 700px) {
+		.tables-container {
+			gap: 64px;
+		}
 	}
 
 	.table-wrapper h3 {
