@@ -102,7 +102,7 @@
 	<header>
 		<h1>How common is your birthday?</h1>
 		<p class="subtitle">
-			This interactive heatmap shows the relative frequency of birthdays in the United States, based on 21 years of birth data. Select your birthday to see how it ranks.
+			Explore U.S. birth frequency data from 1994-2014. See how your birthday ranks, discover which celebrities share it, check your zodiac sign's popularity and compare with friends.
 		</p>
 	</header>
 
