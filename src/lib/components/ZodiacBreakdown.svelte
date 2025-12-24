@@ -80,15 +80,14 @@
 	});
 
 	let maxAvg = $derived(Math.max(...zodiacStats().map(s => s.avgBirths)));
-	let minAvg = $derived(Math.min(...zodiacStats().map(s => s.avgBirths)));
 
 	let selectedSign = $derived(
 		selectedDate ? getZodiacSign(selectedDate.month, selectedDate.day) : null
 	);
 
+	// Zero-based bar width (proper bar chart scaling)
 	function getBarWidth(avgBirths: number): number {
-		const range = maxAvg - minAvg;
-		return range > 0 ? 20 + ((avgBirths - minAvg) / range) * 80 : 50;
+		return maxAvg > 0 ? (avgBirths / maxAvg) * 100 : 0;
 	}
 </script>
 
