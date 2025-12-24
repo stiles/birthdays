@@ -5,11 +5,13 @@
 	interface Props {
 		data: BirthdayData[];
 		selectedDate?: { month: number; day: number } | null;
+		initialFriendDate?: { month: number; day: number } | null;
 	}
 
 	let {
 		data,
-		selectedDate = null
+		selectedDate = null,
+		initialFriendDate = null
 	}: Props = $props();
 
 	const months = [
@@ -27,9 +29,9 @@
 		{ value: 12, label: 'December', days: 31 },
 	];
 
-	// Friend's birthday selection
-	let friendMonth = $state(0);
-	let friendDay = $state(0);
+	// Friend's birthday selection - initialize from URL if present
+	let friendMonth = $state(initialFriendDate?.month ?? 0);
+	let friendDay = $state(initialFriendDate?.day ?? 0);
 
 	let friendAvailableDays = $derived(
 		friendMonth

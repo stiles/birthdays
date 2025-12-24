@@ -17,6 +17,7 @@
 	const data = birthdayData as BirthdayData[];
 
 	let selectedDate: { month: number; day: number } | null = $state(null);
+	let initialFriendDate: { month: number; day: number } | null = $state(null);
 	let hoveredData: BirthdayData | null = $state(null);
 	let tooltipX = $state(0);
 	let tooltipY = $state(0);
@@ -51,14 +52,28 @@
 	}
 
 	onMount(() => {
-		// Parse hash on load
+		// Parse hash on load - supports both #2-17 and #2-17&9-22 (compare) formats
 		const hash = window.location.hash.slice(1);
 		if (hash) {
-			const [month, day] = hash.split('-').map(Number);
+			const parts = hash.split('&');
+			
+			// Parse first birthday (yours)
+			const [month, day] = parts[0].split('-').map(Number);
 			if (month >= 1 && month <= 12 && day >= 1 && day <= 31) {
 				const dateData = data.find(d => d.month === month && d.day === day);
 				if (dateData) {
 					selectedDate = { month, day };
+				}
+			}
+			
+			// Parse second birthday (friend's) if present
+			if (parts[1]) {
+				const [friendMonth, friendDay] = parts[1].split('-').map(Number);
+				if (friendMonth >= 1 && friendMonth <= 12 && friendDay >= 1 && friendDay <= 31) {
+					const friendData = data.find(d => d.month === friendMonth && d.day === friendDay);
+					if (friendData) {
+						initialFriendDate = { month: friendMonth, day: friendDay };
+					}
 				}
 			}
 		}
@@ -139,7 +154,7 @@
 	</section>
 
 	<section class="compare-section">
-		<CompareBirthdays {data} {selectedDate} />
+		<CompareBirthdays {data} {selectedDate} {initialFriendDate} />
 	</section>
 
 	<section class="zodiac-section">
