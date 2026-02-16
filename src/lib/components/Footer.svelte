@@ -13,7 +13,7 @@
 				<div class="footer-links">
 					<a href="https://github.com/stiles/birthdays" class="footer-link" target="_blank" rel="noopener noreferrer">Code</a>
 					<a href="https://github.com/fivethirtyeight/data/tree/master/births" class="footer-link" target="_blank" rel="noopener noreferrer">Data</a>
-					<a href="https://buymeacoffee.com/mattstiles" class="footer-link" target="_blank" rel="noopener noreferrer">Buy me coffee?</a>
+					<a href="https://buymeacoffee.com/mattstiles" class="footer-link" target="_blank" rel="noopener noreferrer">Support the project</a>
 				</div>
 				<div class="footer-meta">
 					Birth data from 1994-2014 via <a href="https://github.com/fivethirtyeight/data/tree/master/births">FiveThirtyEight</a> (CDC NCHS, SSA). Famous birthdays from <a href="https://github.com/richard512/Little-Big-Data">Little-Big-Data</a>.
@@ -41,7 +41,7 @@
 <style>
 	.site-footer {
 		background: var(--color-footer-bg, #0f0d0c);
-		border-top: 4px solid var(--color-accent);
+		border-top: 2px solid var(--color-accent);
 		margin-top: 60px;
 	}
 

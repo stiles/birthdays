@@ -94,9 +94,9 @@
 <div class="zodiac-container">
 	<h3>Zodiac sign popularity</h3>
 	<p class="zodiac-description">
-		Average daily births by astrological sign. 
+		Average daily births by astrological sign.
 		{#if selectedSign}
-			You're a <strong>{selectedSign.name}</strong> {selectedSign.symbol}
+			You're a <strong>{selectedSign.name}</strong>.
 		{/if}
 	</p>
 
@@ -105,7 +105,6 @@
 			{@const isSelected = selectedSign?.name === stat.sign.name}
 			<div class="zodiac-row" class:selected={isSelected}>
 				<div class="zodiac-label">
-					<span class="zodiac-symbol">{stat.sign.symbol}</span>
 					<span class="zodiac-name">{stat.sign.name}</span>
 				</div>
 				<div class="zodiac-bar-container">
@@ -151,7 +150,7 @@
 	}
 
 	.zodiac-description strong {
-		color: var(--color-accent);
+		color: var(--color-text);
 	}
 
 	.zodiac-chart {
@@ -171,19 +170,12 @@
 	}
 
 	.zodiac-row.selected {
-		background: rgba(247, 104, 161, 0.15);
+		background: rgba(255, 255, 255, 0.08);
 	}
 
 	.zodiac-label {
 		display: flex;
 		align-items: center;
-		gap: 8px;
-	}
-
-	.zodiac-symbol {
-		font-size: 18px;
-		width: 24px;
-		text-align: center;
 	}
 
 	.zodiac-name {
@@ -206,11 +198,11 @@
 	}
 
 	.zodiac-bar.most-common {
-		background: var(--color-accent);
+		background: var(--color-text);
 	}
 
 	.zodiac-bar.least-common {
-		background: #feebe2;
+		background: var(--color-text-muted);
 	}
 
 	.zodiac-value {

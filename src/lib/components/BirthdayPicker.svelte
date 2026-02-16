@@ -188,17 +188,16 @@
 		<p class="result-rank">
 			<strong>{formatDate(selectedData.month, selectedData.day)}</strong> ranks 
 			<strong>{selectedData.rankLabel}</strong> out of 366 days, with an average of 
-			<strong>{selectedData.value.toLocaleString()}</strong> births per day.
-		</p>
-		<p class="result-description">
-			{rarity.description}
+			<strong>{selectedData.value.toLocaleString()}</strong> births per day. {rarity.description}
 		</p>
 		<p class="conception-info">
 			Based on a typical 40-week pregnancy, you were likely conceived around <strong>{formatConceptionDate(selectedData.conceptionDate)}</strong>.
 		</p>
 			{#if famousPeople.length > 0}
 				<p class="famous-births">
-					<strong>Famous births on this day:</strong> {famousPeople.map(p => p.name).join(', ')}
+					<strong>Famous births on this day:</strong> {famousPeople.length === 1 
+						? famousPeople[0].name 
+						: famousPeople.slice(0, -1).map(p => p.name).join(', ') + ' and ' + famousPeople[famousPeople.length - 1].name}.
 				</p>
 			{/if}
 		</div>
@@ -270,12 +269,11 @@
 		padding: 20px 24px;
 		background: var(--color-result-bg);
 		border-radius: 8px;
-		border-left: 4px solid var(--color-accent);
 	}
 
 	.result-headline {
 		margin: 0 0 12px 0;
-		font-size: 22px;
+		font-size: 24px;
 		color: var(--color-text);
 	}
 
@@ -287,7 +285,7 @@
 
 	.result-rank {
 		margin: 0 0 12px 0;
-		font-size: 15px;
+		font-size: 17px;
 		color: var(--color-text-muted);
 		line-height: 1.5;
 	}
@@ -298,7 +296,7 @@
 
 	.result-description {
 		margin: 0 0 12px 0;
-		font-size: 15px;
+		font-size: 17px;
 		color: var(--color-text-muted);
 		line-height: 1.5;
 	}

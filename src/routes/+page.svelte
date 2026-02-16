@@ -113,6 +113,12 @@
 
 <svelte:window onmousemove={handleMouseMove} />
 
+<nav class="site-header">
+	<div class="header-content">
+		<a href="/" class="site-logo">BirthdayRank.com</a>
+	</div>
+</nav>
+
 <main>
 	<header>
 		<h1>How common is your birthday?</h1>
@@ -176,10 +182,33 @@
 />
 
 <style>
+	.site-header {
+		background: var(--color-footer-bg, #0f0d0c);
+		border-bottom: 2px solid var(--color-accent);
+	}
+
+	.header-content {
+		max-width: 900px;
+		margin: 0 auto;
+		padding: 16px 24px;
+	}
+
+	.site-logo {
+		font-family: 'Fraunces', Georgia, serif;
+		font-size: 18px;
+		font-weight: 700;
+		color: var(--color-text);
+		text-decoration: none;
+	}
+
+	.site-logo:hover {
+		color: var(--color-accent);
+	}
+
 	main {
 		max-width: 900px;
 		margin: 0 auto;
-		padding: 40px 24px;
+		padding: 24px 24px 40px;
 	}
 
 	header {
