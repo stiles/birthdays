@@ -3,6 +3,8 @@
 	import { formatDate } from '$lib/utils';
 	import famousBirthdaysData from '$lib/data/famous-birthdays.json';
 
+	const ETSY_URL = 'https://birthdayrank.etsy.com';
+
 	interface FamousPerson {
 		name: string;
 		year?: number;
@@ -200,6 +202,15 @@
 						: famousPeople.slice(0, -1).map(p => p.name).join(', ') + ' and ' + famousPeople[famousPeople.length - 1].name}.
 				</p>
 			{/if}
+
+		<div class="print-cta">
+			<div class="print-cta-text">
+				<strong>Love this?</strong> Get a personalized print of your birthday's rarity — ready to frame.
+			</div>
+			<a href={ETSY_URL} class="print-cta-btn" target="_blank" rel="noopener noreferrer">
+				Order a print →
+			</a>
+		</div>
 		</div>
 	{/if}
 </div>
@@ -220,22 +231,29 @@
 		display: flex;
 		align-items: center;
 		gap: 8px;
-		font-size: 14px;
+		font-size: 16px;
 		color: var(--color-text);
 	}
 
 	.picker-label span {
-		font-weight: 500;
+		font-weight: 600;
+		font-size: 17px;
 	}
 
 	select {
-		padding: 8px 12px;
-		font-size: 14px;
-		border: 1px solid var(--color-border);
+		padding: 10px 16px;
+		font-size: 16px;
+		font-weight: 500;
+		border: 2px solid var(--color-border);
 		border-radius: 6px;
 		background: var(--color-bg);
 		color: var(--color-text);
 		cursor: pointer;
+		transition: border-color 0.15s ease;
+	}
+
+	select:hover:not(:disabled) {
+		border-color: var(--color-accent);
 	}
 
 	select:disabled {
@@ -244,8 +262,9 @@
 	}
 
 	select:focus {
-		outline: 2px solid var(--color-accent);
-		outline-offset: 2px;
+		outline: none;
+		border-color: var(--color-accent);
+		box-shadow: 0 0 0 3px rgba(247, 104, 161, 0.1);
 	}
 
 	.clear-btn {
@@ -327,7 +346,52 @@
 		color: var(--color-text);
 	}
 
+	.print-cta {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 16px;
+		margin-top: 16px;
+		padding: 14px 16px;
+		background: rgba(247, 104, 161, 0.08);
+		border: 1px solid rgba(247, 104, 161, 0.3);
+		border-radius: 6px;
+	}
+
+	.print-cta-text {
+		font-size: 14px;
+		color: var(--color-text-muted);
+		line-height: 1.4;
+	}
+
+	.print-cta-text strong {
+		color: var(--color-text);
+	}
+
+	.print-cta-btn {
+		flex-shrink: 0;
+		padding: 8px 16px;
+		font-size: 13px;
+		font-weight: 600;
+		color: #fff;
+		background: var(--color-accent);
+		border-radius: 6px;
+		text-decoration: none;
+		transition: opacity 0.15s ease;
+		white-space: nowrap;
+	}
+
+	.print-cta-btn:hover {
+		opacity: 0.85;
+	}
+
 	@media (max-width: 480px) {
+		.print-cta {
+			flex-direction: column;
+			align-items: stretch;
+			text-align: center;
+		}
+
 		.picker-form {
 			flex-direction: column;
 			align-items: stretch;

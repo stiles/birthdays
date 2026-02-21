@@ -82,6 +82,7 @@
 	const siteUrl = 'https://birthdayrank.com';
 	const title = 'How common is your birthday?';
 	const description = 'Find out how your birthday ranks among all 366 days, which famous people share it, your zodiac sign popularity, and compare with friends. Explore U.S. birth frequency data from 1994-2014.';
+	const ETSY_URL = 'https://birthdayrank.etsy.com';
 </script>
 
 <svelte:head>
@@ -125,6 +126,12 @@
 		<p class="subtitle">
 			Explore U.S. birth frequency data from 1994-2014. See how your birthday ranks, discover which celebrities share it, check your zodiac sign's popularity and compare with friends.
 		</p>
+		<div class="header-cta">
+			<span class="header-cta-text">Get a personalized print of your birthday's rarity</span>
+			<a href={ETSY_URL} class="header-cta-btn" target="_blank" rel="noopener noreferrer">
+				Order a print →
+			</a>
+		</div>
 	</header>
 
 	<section class="picker-section">
@@ -226,9 +233,53 @@
 	.subtitle {
 		font-size: clamp(1rem, 2.5vw, 1.25rem);
 		color: var(--color-text-muted);
-		margin: 0;
+		margin: 0 0 20px 0;
 		line-height: 1.5;
 		max-width: 640px;
+	}
+
+	.header-cta {
+		display: flex;
+		align-items: center;
+		gap: 16px;
+		margin-top: 20px;
+		padding: 14px 20px;
+		background: rgba(247, 104, 161, 0.08);
+		border: 1px solid rgba(247, 104, 161, 0.3);
+		border-radius: 8px;
+		max-width: fit-content;
+	}
+
+	.header-cta-text {
+		font-size: 15px;
+		color: var(--color-text-muted);
+		font-weight: 500;
+	}
+
+	.header-cta-btn {
+		flex-shrink: 0;
+		padding: 8px 18px;
+		font-size: 14px;
+		font-weight: 600;
+		color: #fff;
+		background: var(--color-accent);
+		border-radius: 6px;
+		text-decoration: none;
+		transition: opacity 0.15s ease;
+		white-space: nowrap;
+	}
+
+	.header-cta-btn:hover {
+		opacity: 0.85;
+	}
+
+	@media (max-width: 600px) {
+		.header-cta {
+			flex-direction: column;
+			align-items: stretch;
+			text-align: center;
+			max-width: 100%;
+		}
 	}
 
 	.picker-section {

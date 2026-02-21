@@ -1,5 +1,6 @@
 <script lang="ts">
 	const currentYear = new Date().getFullYear();
+	const ETSY_URL = 'https://birthdayrank.etsy.com';
 </script>
 
 <footer class="site-footer">
@@ -13,6 +14,7 @@
 				<div class="footer-links">
 					<a href="https://github.com/stiles/birthdays" class="footer-link" target="_blank" rel="noopener noreferrer">Code</a>
 					<a href="https://github.com/fivethirtyeight/data/tree/master/births" class="footer-link" target="_blank" rel="noopener noreferrer">Data</a>
+					<a href={ETSY_URL} class="footer-link" target="_blank" rel="noopener noreferrer">Shop prints</a>
 					<a href="https://buymeacoffee.com/mattstiles" class="footer-link" target="_blank" rel="noopener noreferrer">Support the project</a>
 				</div>
 				<div class="footer-meta">

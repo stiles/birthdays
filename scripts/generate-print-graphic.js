@@ -1,7 +1,8 @@
 /**
  * Generate print-ready PDF graphic
- * Run with: node scripts/generate-print-graphic.js
- * 
+ * Run with: node scripts/generate-print-graphic.js --month 9 --day 22
+ *
+ * Outputs to static/prints/{month}-{day}.pdf
  * Outputs a personalized news graphics format with:
  * - Personalized headline based on birthday rarity
  * - Stats about the selected date
@@ -9,8 +10,21 @@
  * - Heatmap visualization with highlighted date
  */
 
-import { writeFileSync, readFileSync } from 'fs';
+import { writeFileSync, readFileSync, mkdirSync } from 'fs';
 import puppeteer from 'puppeteer';
+
+// Parse CLI args: --month N --day N
+const args = process.argv.slice(2);
+function getArg(name) {
+  const i = args.indexOf(`--${name}`);
+  return i !== -1 ? parseInt(args[i + 1], 10) : null;
+}
+const argMonth = getArg('month');
+const argDay = getArg('day');
+if (!argMonth || !argDay || isNaN(argMonth) || isNaN(argDay)) {
+  console.error('Usage: node scripts/generate-print-graphic.js --month <1-12> --day <1-31>');
+  process.exit(1);
+}
 
 // Load birthday data
 const birthdayData = JSON.parse(
@@ -29,8 +43,7 @@ const config = {
   cellSize: 26,      // Optimized for 10" width
   padding: 50,
   labelOffset: 38,
-  // Highlighted date (set to null for no highlight, or personalized output)
-  highlightDate: { month: 9, day: 22 }
+  highlightDate: { month: argMonth, day: argDay }
 };
 
 // Month names for formatting
@@ -300,41 +313,34 @@ function generateHTML() {
 }
 
 async function generatePDF() {
+  const { month, day } = config.highlightDate;
+
+  if (!getDataForDate(month, day)) {
+    console.error(`No data found for ${month}/${day} — skipping.`);
+    process.exit(1);
+  }
+
+  mkdirSync('static/prints', { recursive: true });
+  const outPath = `static/prints/${month}-${day}.pdf`;
+
   const html = generateHTML();
-  
-  // Save HTML for debugging
-  writeFileSync('static/print-graphic.html', html);
-  console.log('Generated static/print-graphic.html');
 
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
-  
-  // Set viewport to exact 8x10 dimensions
-  await page.setViewport({
-    width: config.width,
-    height: config.height
-  });
-  
+
+  await page.setViewport({ width: config.width, height: config.height });
   await page.setContent(html, { waitUntil: 'networkidle0' });
 
-  // Generate PDF with exact 8x10 dimensions
+  // 10 × 8 inch PDF, vector quality
   await page.pdf({
-    path: 'static/birthday-heatmap.pdf',
-    width: `${config.width}px`,
-    height: `${config.height}px`,
+    path: outPath,
+    width: '10in',
+    height: '8in',
     printBackground: true,
     margin: { top: 0, right: 0, bottom: 0, left: 0 }
   });
 
-  console.log('Generated static/birthday-heatmap.pdf (10x8 inches at 96 DPI)');
-
-  // Also generate PNG for quick preview
-  await page.screenshot({
-    path: 'static/birthday-heatmap.png',
-    clip: { x: 0, y: 0, width: config.width, height: config.height }
-  });
-
-  console.log('Generated static/birthday-heatmap.png');
+  console.log(`Generated ${outPath}`);
 
   await browser.close();
 }
