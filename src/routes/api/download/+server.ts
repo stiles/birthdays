@@ -1,6 +1,7 @@
 import { error } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
-import { readFileSync, existsSync } from 'fs';
+import { readFile } from 'fs/promises';
+import { existsSync } from 'fs';
 import { join } from 'path';
 
 function verifyDownloadToken(token: string): { sessionId: string; month: number; day: number; exp: number } | null {
@@ -19,7 +20,7 @@ function verifyDownloadToken(token: string): { sessionId: string; month: number;
 	}
 }
 
-export const GET: RequestHandler = async ({ url }) => {
+export const GET: RequestHandler = async ({ url, fetch }) => {
 	const token = url.searchParams.get('token');
 	const month = url.searchParams.get('month');
 	const day = url.searchParams.get('day');
@@ -39,28 +40,30 @@ export const GET: RequestHandler = async ({ url }) => {
 		throw error(403, 'Token does not match requested file');
 	}
 
-	// Build file path
+	// In Vercel, static files are served from the public URL, not filesystem
+	// Fetch the file via HTTP since it's in the static directory
 	const filename = `${month}-${day}.pdf`;
-	const filepath = join(process.cwd(), 'static', 'prints', filename);
-
-	// Check if file exists
-	if (!existsSync(filepath)) {
-		throw error(404, 'File not found');
-	}
-
+	const fileUrl = `/prints/${filename}`;
+	
 	try {
-		// Read and return file
-		const fileBuffer = readFileSync(filepath);
+		// Fetch the static file
+		const response = await fetch(fileUrl);
+		
+		if (!response.ok) {
+			throw error(404, 'File not found');
+		}
+
+		const fileBuffer = await response.arrayBuffer();
 
 		return new Response(fileBuffer, {
 			headers: {
 				'Content-Type': 'application/pdf',
 				'Content-Disposition': `attachment; filename="birthday-${month}-${day}.pdf"`,
-				'Content-Length': fileBuffer.length.toString()
+				'Content-Length': fileBuffer.byteLength.toString()
 			}
 		});
 	} catch (err) {
-		console.error('File read error:', err);
-		throw error(500, 'Failed to read file');
+		console.error('File fetch error:', err);
+		throw error(500, 'Failed to fetch file');
 	}
 };
