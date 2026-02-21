@@ -203,29 +203,32 @@
 					
 					<div class="example-image">
 						<img src="/exmaple.png" alt="Example birthday print showing heatmap and stats" />
-						<p class="example-caption">Example print (your birthday will be personalized and highlighted)</p>
+						<p class="example-caption">Sample print showing the complete design</p>
 					</div>
 
-					<div class="preview-content">
-						<p class="preview-headline">
-							Your birthday is <strong class="rarity-label">{rarity.label}</strong>
-						</p>
-						<p class="preview-details">
-							<strong>{formatDate(selectedData.month, selectedData.day)}</strong> ranks 
-							<strong>{selectedData.rankLabel}</strong> out of 366 days, with an average of 
-							<strong>{selectedData.value.toLocaleString()}</strong> births per day.
-						</p>
-						{#if famousPeople.length > 0}
-							<p class="preview-famous">
-								<strong>Famous births:</strong> {famousPeople.length === 1 
-									? famousPeople[0].name 
-									: famousPeople.slice(0, -1).map(p => p.name).join(', ') + ' and ' + famousPeople[famousPeople.length - 1].name}
+					<div class="text-preview-section">
+						<h4>Your personalized text will say:</h4>
+						<div class="preview-content">
+							<p class="preview-headline">
+								Your birthday is <strong class="rarity-label">{rarity.label}</strong>
 							</p>
-						{/if}
+							<p class="preview-details">
+								<strong>{formatDate(selectedData.month, selectedData.day)}</strong> ranks 
+								<strong>{selectedData.rankLabel}</strong> out of 366 days, with an average of 
+								<strong>{selectedData.value.toLocaleString()}</strong> births per day.
+							</p>
+							{#if famousPeople.length > 0}
+								<p class="preview-famous">
+									<strong>Famous births:</strong> {famousPeople.length === 1 
+										? famousPeople[0].name 
+										: famousPeople.slice(0, -1).map(p => p.name).join(', ') + ' and ' + famousPeople[famousPeople.length - 1].name}
+								</p>
+							{/if}
+						</div>
 					</div>
 
 					<div class="what-you-get">
-						<h4>Your download includes:</h4>
+						<h4>What's included:</h4>
 						<ul>
 							<li>Vector-based PDF (3000px × 2400px) — prints crisp at any size</li>
 							<li>Optimized for 10" × 8" (scales beautifully to larger sizes)</li>
@@ -411,6 +414,17 @@
 		color: var(--color-text-muted);
 		font-style: italic;
 		margin: 0;
+	}
+
+	.text-preview-section {
+		margin-bottom: 24px;
+	}
+
+	.text-preview-section h4 {
+		font-size: 1rem;
+		font-weight: 600;
+		color: var(--color-text);
+		margin: 0 0 12px 0;
 	}
 
 	.preview-content {
