@@ -3,8 +3,6 @@
 	import { formatDate } from '$lib/utils';
 	import famousBirthdaysData from '$lib/data/famous-birthdays.json';
 
-	const ETSY_URL = 'https://birthdayrank.etsy.com';
-
 	interface FamousPerson {
 		name: string;
 		year?: number;
@@ -205,9 +203,9 @@
 
 		<div class="print-cta">
 			<div class="print-cta-text">
-				<strong>Love this?</strong> Get a personalized print of your birthday — ready to frame.
+				<strong>Love this?</strong> Get a personalized print of your birthday's rarity — ready to frame.
 			</div>
-			<a href={ETSY_URL} class="print-cta-btn" target="_blank" rel="noopener noreferrer">
+			<a href="/shop?month={selectedDate?.month}&day={selectedDate?.day}" class="print-cta-btn">
 				Order a print →
 			</a>
 		</div>

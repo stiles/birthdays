@@ -82,7 +82,6 @@
 	const siteUrl = 'https://birthdayrank.com';
 	const title = 'How common is your birthday?';
 	const description = 'Find out how your birthday ranks among all 366 days, which famous people share it, your zodiac sign popularity, and compare with friends. Explore U.S. birth frequency data from 1994-2014.';
-	const ETSY_URL = 'https://birthdayrank.etsy.com';
 </script>
 
 <svelte:head>
@@ -128,7 +127,7 @@
 		</p>
 		<div class="header-cta">
 			<span class="header-cta-text">Get a personalized print of your birthday</span>
-			<a href={ETSY_URL} class="header-cta-btn" target="_blank" rel="noopener noreferrer">
+			<a href="/shop" class="header-cta-btn">
 				Order now →
 			</a>
 		</div>
