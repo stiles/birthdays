@@ -168,7 +168,7 @@
 	<header>
 		<h1>Get your personalized birthday print</h1>
 		<p class="subtitle">
-			A high-quality, print-ready PDF showing how rare your birthday is — perfect for framing.
+			High-resolution, vector-based PDF that prints beautifully at any size — perfect for framing.
 		</p>
 	</header>
 
@@ -199,7 +199,13 @@
 
 			{#if selectedData && rarity}
 				<div class="preview">
-					<h3>Your print preview</h3>
+					<h3>An example of what you'll get</h3>
+					
+					<div class="example-image">
+						<img src="/exmaple.png" alt="Example birthday print showing heatmap and stats" />
+						<p class="example-caption">Example print (your birthday will be personalized and highlighted)</p>
+					</div>
+
 					<div class="preview-content">
 						<p class="preview-headline">
 							Your birthday is <strong class="rarity-label">{rarity.label}</strong>
@@ -219,14 +225,22 @@
 					</div>
 
 					<div class="what-you-get">
-						<h4>What you'll receive:</h4>
+						<h4>Your download includes:</h4>
 						<ul>
-							<li>High-resolution PDF (10" × 8", print-ready)</li>
-							<li>Personalized headline and stats for your birthday</li>
-							<li>Full year heatmap with your date highlighted</li>
+							<li>Vector-based PDF (3000px × 2400px) — prints crisp at any size</li>
+							<li>Optimized for 10" × 8" (scales beautifully to larger sizes)</li>
+							<li>Personalized headline showing your birthday's rarity</li>
+							<li>Full year heatmap with your date highlighted in yellow</li>
 							<li>Famous people who share your birthday</li>
-							<li>Data sources cited (CDC, SSA)</li>
+							<li>Data sources cited (CDC NCHS, SSA)</li>
 						</ul>
+					</div>
+
+					<div class="trust-section">
+						<p class="trust-text">
+							<strong>How is this made?</strong> Our prints are generated from 21 years of U.S. birth data (1994-2014). 
+							<a href="/about" target="_blank">Learn more about our data and methodology →</a>
+						</p>
 					</div>
 
 					<div class="checkout-section">
@@ -378,6 +392,27 @@
 		color: var(--color-text);
 	}
 
+	.example-image {
+		margin-bottom: 24px;
+		text-align: center;
+	}
+
+	.example-image img {
+		width: 100%;
+		max-width: 600px;
+		height: auto;
+		border-radius: 8px;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+		margin-bottom: 8px;
+	}
+
+	.example-caption {
+		font-size: 13px;
+		color: var(--color-text-muted);
+		font-style: italic;
+		margin: 0;
+	}
+
 	.preview-content {
 		background: var(--color-bg);
 		padding: 20px;
@@ -441,6 +476,35 @@
 		font-size: 14px;
 		color: var(--color-text-muted);
 		line-height: 1.7;
+	}
+
+	.trust-section {
+		background: var(--color-bg);
+		padding: 16px 20px;
+		border-radius: 8px;
+		border: 1px solid var(--color-border);
+		margin-bottom: 24px;
+	}
+
+	.trust-text {
+		font-size: 14px;
+		color: var(--color-text-muted);
+		line-height: 1.6;
+		margin: 0;
+	}
+
+	.trust-text strong {
+		color: var(--color-text);
+	}
+
+	.trust-text a {
+		color: var(--color-accent);
+		text-decoration: none;
+		font-weight: 500;
+	}
+
+	.trust-text a:hover {
+		text-decoration: underline;
 	}
 
 	.checkout-section {

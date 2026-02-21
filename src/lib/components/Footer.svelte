@@ -11,23 +11,19 @@
 					An interactive visualization showing the relative frequency of birthdays in the United States, built with SvelteKit and D3.
 				</p>
 				<div class="footer-links">
+					<a href="/about" class="footer-link">About</a>
 					<a href="/shop" class="footer-link">Shop prints</a>
-					<a href="https://buymeacoffee.com/mattstiles" class="footer-link" target="_blank" rel="noopener noreferrer">Support the project</a>
+					<a href="/contact" class="footer-link">Contact</a>
+					<a href="/privacy" class="footer-link">Privacy</a>
+					<a href="/terms" class="footer-link">Terms</a>
 				</div>
 				<div class="footer-meta">
 					Birth data from 1994-2014 via FiveThirtyEight (CDC NCHS, SSA). Famous birthdays from Little-Big-Data.
 				</div>
 			</div>
-			<div class="footer-social">
-				<a href="https://x.com/stiles" class="footer-social-link" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
-					<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-						<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-					</svg>
-				</a>
-			</div>
 		</div>
 		<div class="footer-bottom">
-			<p class="footer-copyright">&copy; {currentYear} <a href="https://mattstiles.me">Matt Stiles</a> (May 11th)</p>
+			<p class="footer-copyright">&copy; {currentYear} Birthday Rank</p>
 		</div>
 	</div>
 </footer>
