@@ -127,9 +127,9 @@
 			Explore U.S. birth frequency data from 1994-2014. See how your birthday ranks, discover which celebrities share it, check your zodiac sign's popularity and compare with friends.
 		</p>
 		<div class="header-cta">
-			<span class="header-cta-text">Get a personalized print of your birthday's rarity</span>
+			<span class="header-cta-text">Get a personalized print of your birthday</span>
 			<a href={ETSY_URL} class="header-cta-btn" target="_blank" rel="noopener noreferrer">
-				Order a print →
+				Order now →
 			</a>
 		</div>
 	</header>

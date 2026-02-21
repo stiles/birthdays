@@ -205,7 +205,7 @@
 
 		<div class="print-cta">
 			<div class="print-cta-text">
-				<strong>Love this?</strong> Get a personalized print of your birthday's rarity — ready to frame.
+				<strong>Love this?</strong> Get a personalized print of your birthday — ready to frame.
 			</div>
 			<a href={ETSY_URL} class="print-cta-btn" target="_blank" rel="noopener noreferrer">
 				Order a print →
