@@ -311,13 +311,6 @@
 		color: var(--color-text);
 	}
 
-	.result-description {
-		margin: 0 0 12px 0;
-		font-size: 17px;
-		color: var(--color-text-muted);
-		line-height: 1.5;
-	}
-
 	.conception-info {
 		margin: 0 0 12px 0;
 		font-size: 14px;
