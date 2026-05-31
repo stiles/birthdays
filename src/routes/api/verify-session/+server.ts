@@ -1,7 +1,6 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 import Stripe from 'stripe';
-import { sign } from 'crypto';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
 	apiVersion: '2024-12-18.acacia'

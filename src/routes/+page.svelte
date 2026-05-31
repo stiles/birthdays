@@ -126,9 +126,12 @@
 			Explore U.S. birth frequency data from 1994-2014. See how your birthday ranks, discover which celebrities share it, check your zodiac sign's popularity and compare with friends.
 		</p>
 		<div class="header-cta">
-			<span class="header-cta-text">Get a personalized print of your birthday</span>
-			<a href="/shop" class="header-cta-btn">
-				Order now →
+			<span class="header-cta-text">Get a personalized, frameable print of your birthday</span>
+			<a
+				href={selectedDate ? `/shop?month=${selectedDate.month}&day=${selectedDate.day}` : '/shop'}
+				class="header-cta-btn"
+			>
+				Order now · $10
 			</a>
 		</div>
 	</header>

@@ -174,6 +174,30 @@
 
 	<div class="shop-container">
 		<div class="picker-section">
+			<div class="example-image">
+				<img src="/exmaple.png" alt="Example birthday print showing heatmap and stats" />
+				<p class="example-caption">Sample print — yours will be personalized with your date, rank and famous births</p>
+			</div>
+
+			<div class="what-you-get">
+				<h4>What's included:</h4>
+				<ul>
+					<li>Vector-based PDF (3000px × 2400px) — prints crisp at any size</li>
+					<li>Optimized for 10" × 8" (scales beautifully to larger sizes)</li>
+					<li>Personalized headline showing your birthday's rarity</li>
+					<li>Full year heatmap with your date highlighted in yellow</li>
+					<li>Famous people who share your birthday</li>
+					<li>Data sources cited (CDC NCHS, SSA)</li>
+				</ul>
+			</div>
+
+			<div class="trust-section">
+				<p class="trust-text">
+					<strong>How is this made?</strong> Prints are generated from 21 years of U.S. birth data (1994-2014).
+					<a href="/about" target="_blank">Learn more about our data and methodology →</a>
+				</p>
+			</div>
+
 			<h2>Select your birthday</h2>
 			<div class="picker-form">
 				<label class="picker-label">
@@ -199,13 +223,6 @@
 
 			{#if selectedData && rarity}
 				<div class="preview">
-					<h3>An example of what you'll get</h3>
-					
-					<div class="example-image">
-						<img src="/exmaple.png" alt="Example birthday print showing heatmap and stats" />
-						<p class="example-caption">Sample print showing the complete design</p>
-					</div>
-
 					<div class="text-preview-section">
 						<h4>Your personalized text will say:</h4>
 						<div class="preview-content">
@@ -225,25 +242,6 @@
 								</p>
 							{/if}
 						</div>
-					</div>
-
-					<div class="what-you-get">
-						<h4>What's included:</h4>
-						<ul>
-							<li>Vector-based PDF (3000px × 2400px) — prints crisp at any size</li>
-							<li>Optimized for 10" × 8" (scales beautifully to larger sizes)</li>
-							<li>Personalized headline showing your birthday's rarity</li>
-							<li>Full year heatmap with your date highlighted in yellow</li>
-							<li>Famous people who share your birthday</li>
-							<li>Data sources cited (CDC NCHS, SSA)</li>
-						</ul>
-					</div>
-
-					<div class="trust-section">
-						<p class="trust-text">
-							<strong>How is this made?</strong> Our prints are generated from 21 years of U.S. birth data (1994-2014). 
-							<a href="/about" target="_blank">Learn more about our data and methodology →</a>
-						</p>
 					</div>
 
 					<div class="checkout-section">

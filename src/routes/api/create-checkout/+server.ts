@@ -40,6 +40,9 @@ export const POST: RequestHandler = async ({ request, url }) => {
 				month: month.toString(),
 				day: day.toString(),
 			},
+			payment_intent_data: {
+				statement_descriptor: 'BIRTHDAY RANK',
+			},
 		});
 
 		return json({ url: session.url });

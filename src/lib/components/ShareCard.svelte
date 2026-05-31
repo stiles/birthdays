@@ -117,6 +117,16 @@
 
 <div class="share-container">
 	<canvas bind:this={canvas} class="hidden-canvas"></canvas>
+
+	<div class="print-cta">
+		<div class="print-cta-text">
+			<strong>Want a frameable print?</strong>
+			<span>High-res PDF of your birthday data — perfect for framing or gifting.</span>
+		</div>
+		<a href="/shop?month={data.month}&day={data.day}" class="print-cta-btn">
+			Get a print · $10
+		</a>
+	</div>
 	
 	<h3 class="share-title">Share your result</h3>
 	<p class="share-subtitle">Challenge your friends to find out how their birthday ranks!</p>
@@ -160,6 +170,62 @@
 		padding: 24px;
 		background: var(--color-result-bg);
 		border-radius: 12px;
+	}
+
+	.print-cta {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 16px;
+		padding: 16px 20px;
+		margin-bottom: 24px;
+		background: rgba(247, 104, 161, 0.08);
+		border: 1px solid rgba(247, 104, 161, 0.3);
+		border-radius: 8px;
+	}
+
+	.print-cta-text {
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+		font-size: 14px;
+	}
+
+	.print-cta-text strong {
+		color: var(--color-text);
+		font-size: 15px;
+	}
+
+	.print-cta-text span {
+		color: var(--color-text-muted);
+	}
+
+	.print-cta-btn {
+		flex-shrink: 0;
+		padding: 9px 18px;
+		font-size: 14px;
+		font-weight: 600;
+		color: #fff;
+		background: var(--color-accent);
+		border-radius: 6px;
+		text-decoration: none;
+		transition: opacity 0.15s ease;
+		white-space: nowrap;
+	}
+
+	.print-cta-btn:hover {
+		opacity: 0.85;
+	}
+
+	@media (max-width: 500px) {
+		.print-cta {
+			flex-direction: column;
+			align-items: stretch;
+		}
+
+		.print-cta-btn {
+			text-align: center;
+		}
 	}
 
 	.hidden-canvas {
